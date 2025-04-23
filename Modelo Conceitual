@@ -1,0 +1,185 @@
+# Modelo Conceitual do Banco de Dados - GEHAB Bank
+
+## Entidades Principais
+
+### Cliente
+Representa os clientes do banco, contendo informações pessoais e de contato.
+- ID_Cliente (PK)
+- CPF
+- Nome
+- Data_Nascimento
+- Endereco
+- Cidade
+- Estado
+- CEP
+- Telefone
+- Email
+- Data_Cadastro
+- Status (Ativo/Inativo)
+
+### Funcionario
+Representa os funcionários do banco.
+- ID_Funcionario (PK)
+- CPF
+- Nome
+- Data_Nascimento
+- Endereco
+- Cidade
+- Estado
+- CEP
+- Telefone
+- Email
+- Data_Contratacao
+- Cargo
+- Salario
+- ID_Agencia (FK)
+- Status (Ativo/Inativo)
+
+### Agencia
+Representa as agências bancárias do GEHAB Bank.
+- ID_Agencia (PK)
+- Nome_Agencia
+- Numero_Agencia
+- Endereco
+- Cidade
+- Estado
+- CEP
+- Telefone
+- Gerente_ID (FK - referencia Funcionario)
+- Data_Inauguracao
+- Status (Ativa/Inativa)
+
+### Conta
+Representa as contas bancárias dos clientes.
+- ID_Conta (PK)
+- Numero_Conta
+- Tipo_Conta (Corrente/Poupança/Salário/Investimento)
+- Data_Abertura
+- Saldo
+- Limite_Credito
+- ID_Cliente (FK)
+- ID_Agencia (FK)
+- Status (Ativa/Inativa/Bloqueada)
+
+### Transacao
+Registra todas as transações realizadas nas contas.
+- ID_Transacao (PK)
+- Data_Hora
+- Tipo_Transacao (Depósito/Saque/Transferência/Pagamento)
+- Valor
+- ID_Conta_Origem (FK)
+- ID_Conta_Destino (FK - opcional, para transferências)
+- Descricao
+- Canal (Internet Banking/Caixa Eletrônico/Agência/App)
+- Status (Concluída/Pendente/Cancelada)
+
+### Cartao
+Representa os cartões emitidos para os clientes.
+- ID_Cartao (PK)
+- Numero_Cartao
+- Tipo_Cartao (Débito/Crédito/Múltiplo)
+- Data_Emissao
+- Data_Validade
+- Limite_Credito
+- ID_Conta (FK)
+- Status (Ativo/Bloqueado/Cancelado)
+
+### Fatura_Cartao
+Registra as faturas dos cartões de crédito.
+- ID_Fatura (PK)
+- ID_Cartao (FK)
+- Data_Fechamento
+- Data_Vencimento
+- Valor_Total
+- Valor_Minimo
+- Status (Aberta/Fechada/Paga/Atrasada)
+
+### Compra_Cartao
+Registra as compras realizadas com cartões.
+- ID_Compra (PK)
+- ID_Cartao (FK)
+- Data_Compra
+- Valor
+- Estabelecimento
+- Categoria
+- Numero_Parcelas
+- ID_Fatura (FK)
+- Status (Aprovada/Negada/Estornada)
+
+### Emprestimo
+Representa os empréstimos concedidos aos clientes.
+- ID_Emprestimo (PK)
+- ID_Cliente (FK)
+- ID_Conta (FK)
+- Data_Solicitacao
+- Valor_Solicitado
+- Taxa_Juros
+- Prazo_Meses
+- Valor_Parcela
+- Data_Aprovacao
+- Status (Solicitado/Aprovado/Negado/Quitado)
+
+### Parcela_Emprestimo
+Registra as parcelas dos empréstimos.
+- ID_Parcela (PK)
+- ID_Emprestimo (FK)
+- Numero_Parcela
+- Data_Vencimento
+- Valor_Parcela
+- Data_Pagamento
+- Valor_Pago
+- Status (Pendente/Paga/Atrasada)
+
+### Investimento
+Representa os investimentos realizados pelos clientes.
+- ID_Investimento (PK)
+- ID_Cliente (FK)
+- ID_Conta (FK)
+- Tipo_Investimento (Poupança/CDB/LCI/LCA/Tesouro Direto)
+- Data_Aplicacao
+- Valor_Aplicado
+- Taxa_Rendimento
+- Data_Vencimento
+- Status (Ativo/Resgatado/Vencido)
+
+### Atendimento
+Registra os atendimentos realizados aos clientes.
+- ID_Atendimento (PK)
+- ID_Cliente (FK)
+- ID_Funcionario (FK)
+- Data_Hora
+- Canal (Presencial/Telefone/Chat/Email)
+- Assunto
+- Descricao
+- Status (Aberto/Em Andamento/Concluído/Cancelado)
+
+## Relacionamentos
+
+1. **Cliente-Conta**: Um cliente pode ter várias contas (1:N)
+2. **Agencia-Conta**: Uma agência pode gerenciar várias contas (1:N)
+3. **Agencia-Funcionario**: Uma agência possui vários funcionários (1:N)
+4. **Funcionario-Agencia**: Um funcionário (gerente) pode gerenciar uma agência (1:1)
+5. **Conta-Transacao**: Uma conta pode ter várias transações (1:N)
+6. **Conta-Cartao**: Uma conta pode ter vários cartões associados (1:N)
+7. **Cartao-Fatura_Cartao**: Um cartão pode ter várias faturas (1:N)
+8. **Cartao-Compra_Cartao**: Um cartão pode registrar várias compras (1:N)
+9. **Fatura_Cartao-Compra_Cartao**: Uma fatura pode conter várias compras (1:N)
+10. **Cliente-Emprestimo**: Um cliente pode ter vários empréstimos (1:N)
+11. **Conta-Emprestimo**: Uma conta pode estar associada a vários empréstimos (1:N)
+12. **Emprestimo-Parcela_Emprestimo**: Um empréstimo possui várias parcelas (1:N)
+13. **Cliente-Investimento**: Um cliente pode ter vários investimentos (1:N)
+14. **Conta-Investimento**: Uma conta pode estar associada a vários investimentos (1:N)
+15. **Cliente-Atendimento**: Um cliente pode ter vários atendimentos (1:N)
+16. **Funcionario-Atendimento**: Um funcionário pode realizar vários atendimentos (1:N)
+
+## Considerações de Normalização
+
+1. **Primeira Forma Normal (1FN)**: Todas as tabelas possuem chaves primárias e não contêm grupos repetitivos.
+
+2. **Segunda Forma Normal (2FN)**: Todos os atributos não-chave dependem totalmente da chave primária.
+
+3. **Terceira Forma Normal (3FN)**: Não existem dependências transitivas, ou seja, atributos não-chave não dependem de outros atributos não-chave.
+
+4. **Forma Normal de Boyce-Codd (FNBC)**: Todos os determinantes são chaves candidatas.
+
+Este modelo conceitual servirá como base para a criação do modelo lógico e físico do banco de dados do GEHAB Bank, garantindo a integridade dos dados e a eficiência nas operações.
