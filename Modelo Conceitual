@@ -172,12 +172,12 @@ Registra os atendimentos realizados aos clientes.
 16. Funcionario-Atendimento: Um funcionário pode realizar vários atendimentos (1:N)
 
 ## Considerações de Normalização
-1. **Primeira Forma Normal (1FN)**: Todas as tabelas possuem chaves primárias e não contêm grupos repetitivos.
+1. Primeira Forma Normal (1FN): Todas as tabelas possuem chaves primárias e não contêm grupos repetitivos.
 
-2. **Segunda Forma Normal (2FN)**: Todos os atributos não-chave dependem totalmente da chave primária.
+2. Segunda Forma Normal (2FN): Todos os atributos não-chave dependem totalmente da chave primária.
 
-3. **Terceira Forma Normal (3FN)**: Não existem dependências transitivas, ou seja, atributos não-chave não dependem de outros atributos não-chave.
+3. Terceira Forma Normal (3FN): Não existem dependências transitivas, ou seja, atributos não-chave não dependem de outros atributos não-chave.
 
-4. **Forma Normal de Boyce-Codd (FNBC)**: Todos os determinantes são chaves candidatas.
+4. Forma Normal de Boyce-Codd (FNBC): Todos os determinantes são chaves candidatas.
 
-Este modelo conceitual servirá como base para a criação do modelo lógico e físico do banco de dados do GEHAB Bank, garantindo a integridade dos dados e a eficiência nas operações.
+Este modelo conceitual servirá como base para a criação do modelo lógico e físico do banco de dados do GEHAB Bank, garantindo a integridade dos dados e a eficiência nas operações
