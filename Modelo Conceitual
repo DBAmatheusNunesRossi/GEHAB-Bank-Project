@@ -154,26 +154,24 @@ Registra os atendimentos realizados aos clientes.
 - Status (Aberto/Em Andamento/Concluído/Cancelado)
 
 ## Relacionamentos
-
-1. **Cliente-Conta**: Um cliente pode ter várias contas (1:N)
-2. **Agencia-Conta**: Uma agência pode gerenciar várias contas (1:N)
-3. **Agencia-Funcionario**: Uma agência possui vários funcionários (1:N)
-4. **Funcionario-Agencia**: Um funcionário (gerente) pode gerenciar uma agência (1:1)
-5. **Conta-Transacao**: Uma conta pode ter várias transações (1:N)
-6. **Conta-Cartao**: Uma conta pode ter vários cartões associados (1:N)
-7. **Cartao-Fatura_Cartao**: Um cartão pode ter várias faturas (1:N)
-8. **Cartao-Compra_Cartao**: Um cartão pode registrar várias compras (1:N)
-9. **Fatura_Cartao-Compra_Cartao**: Uma fatura pode conter várias compras (1:N)
-10. **Cliente-Emprestimo**: Um cliente pode ter vários empréstimos (1:N)
-11. **Conta-Emprestimo**: Uma conta pode estar associada a vários empréstimos (1:N)
-12. **Emprestimo-Parcela_Emprestimo**: Um empréstimo possui várias parcelas (1:N)
-13. **Cliente-Investimento**: Um cliente pode ter vários investimentos (1:N)
-14. **Conta-Investimento**: Uma conta pode estar associada a vários investimentos (1:N)
-15. **Cliente-Atendimento**: Um cliente pode ter vários atendimentos (1:N)
-16. **Funcionario-Atendimento**: Um funcionário pode realizar vários atendimentos (1:N)
+1. Cliente-Conta: Um cliente pode ter várias contas (1:N)
+2. Agencia-Conta: Uma agência pode gerenciar várias contas (1:N)
+3. Agencia-Funcionario: Uma agência possui vários funcionários (1:N)
+4. Funcionario-Agencia: Um funcionário (gerente) pode gerenciar uma agência (1:1)
+5. Conta-Transacao: Uma conta pode ter várias transações (1:N)
+6. Conta-Cartao: Uma conta pode ter vários cartões associados (1:N)
+7. Cartao-Fatura_Cartao: Um cartão pode ter várias faturas (1:N)
+8. Cartao-Compra_Cartao: Um cartão pode registrar várias compras (1:N)
+9. Fatura_Cartao-Compra_Cartao: Uma fatura pode conter várias compras (1:N)
+10. Cliente-Emprestimo: Um cliente pode ter vários empréstimos (1:N)
+11. Conta-Emprestimo: Uma conta pode estar associada a vários empréstimos (1:N)
+12. Emprestimo-Parcela_Emprestimo: Um empréstimo possui várias parcelas (1:N)
+13. Cliente-Investimento: Um cliente pode ter vários investimentos (1:N)
+14. Conta-Investimento: Uma conta pode estar associada a vários investimentos (1:N)
+15. Cliente-Atendimento: Um cliente pode ter vários atendimentos (1:N)
+16. Funcionario-Atendimento: Um funcionário pode realizar vários atendimentos (1:N)
 
 ## Considerações de Normalização
-
 1. **Primeira Forma Normal (1FN)**: Todas as tabelas possuem chaves primárias e não contêm grupos repetitivos.
 
 2. **Segunda Forma Normal (2FN)**: Todos os atributos não-chave dependem totalmente da chave primária.
