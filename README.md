@@ -1,6 +1,8 @@
 # GEHAB-Bank-Project
 This repository showcases the development of a complete relational database project for a fictional financial institution called GEHAB Bank, using SQL Server as the (DBMS)
 
+![Image](https://github.com/user-attachments/assets/558ca1dc-c2a6-4cb7-81f5-6a8c3d8e9d8c)
+
 
 # Índice da Documentação do Projeto GEHAB Bank
 Este README contém todas as partes da documentação do projeto de banco de dados GEHAB Bank.
